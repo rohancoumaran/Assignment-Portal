@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Assignment Upload Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="header">
+        <div>
+          <p class="eyebrow">Student Portal</p>
+          <h1>Assignment Uploads</h1>
+        </div>
+        <button class="ghost-button" id="refreshButton" type="button">Refresh</button>
+      </section>
+
+      <section class="workspace">
+        <form class="upload-panel" id="uploadForm">
+          <label class="file-drop" for="assignmentFile">
+            <span class="file-drop-title">Choose File</span>
+            <span class="file-drop-meta" id="selectedFile">PDF, DOCX, PPTX, XLSX, TXT, or ZIP</span>
+            <input id="assignmentFile" name="assignment" type="file" required>
+          </label>
+          <button class="primary-button" type="submit">Upload</button>
+          <p class="status" id="statusMessage" role="status"></p>
+        </form>
+
+        <section class="files-panel" aria-labelledby="filesTitle">
+          <div class="panel-heading">
+            <h2 id="filesTitle">Uploaded Files</h2>
+            <span id="fileCount">0 files</span>
+          </div>
+          <div class="file-list" id="fileList"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

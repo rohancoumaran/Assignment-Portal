@@ -1,0 +1,251 @@
+:root {
+  --ink: #17201b;
+  --muted: #647067;
+  --paper: #f7f5ef;
+  --panel: #ffffff;
+  --line: #d9ded5;
+  --accent: #0f7a5f;
+  --accent-dark: #095c48;
+  --error: #ad3434;
+  --shadow: 0 18px 50px rgba(23, 32, 27, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    linear-gradient(120deg, rgba(15, 122, 95, 0.14), transparent 42%),
+    linear-gradient(210deg, rgba(186, 66, 52, 0.12), transparent 36%),
+    var(--paper);
+}
+
+button,
+input,
+a {
+  font: inherit;
+}
+
+.shell {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0;
+}
+
+.header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent-dark);
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 0.95;
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  gap: 28px;
+  padding-top: 28px;
+}
+
+.upload-panel,
+.files-panel {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.upload-panel {
+  align-self: start;
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.file-drop {
+  display: grid;
+  gap: 10px;
+  min-height: 168px;
+  padding: 24px;
+  place-content: center;
+  text-align: center;
+  border: 2px dashed #b8c3bb;
+  border-radius: 8px;
+  background: #fbfaf6;
+  cursor: pointer;
+}
+
+.file-drop input {
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  position: absolute;
+}
+
+.file-drop-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.file-drop-meta {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.primary-button,
+.ghost-button,
+.download-button {
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.primary-button {
+  min-height: 48px;
+  color: #fff;
+  background: var(--accent);
+  font-weight: 700;
+}
+
+.primary-button:hover,
+.download-button:hover {
+  background: var(--accent-dark);
+}
+
+.ghost-button {
+  padding: 10px 16px;
+  color: var(--ink);
+  background: transparent;
+  border-color: var(--line);
+}
+
+.files-panel {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-heading span {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.file-list {
+  display: grid;
+}
+
+.file-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.file-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.download-button {
+  padding: 9px 13px;
+  color: #fff;
+  background: var(--accent);
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.empty,
+.status {
+  color: var(--muted);
+}
+
+.empty {
+  margin: 0;
+  padding: 22px 20px;
+}
+
+.status {
+  min-height: 22px;
+  margin: 0;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 0.88rem;
+}
+
+.status[data-type="success"] {
+  color: var(--accent-dark);
+}
+
+.status[data-type="error"] {
+  color: var(--error);
+}
+
+@media (max-width: 760px) {
+  .shell {
+    width: min(100% - 22px, 1080px);
+    padding: 24px 0;
+  }
+
+  .header,
+  .workspace {
+    display: grid;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .ghost-button {
+    justify-self: start;
+  }
+
+  .file-row {
+    grid-template-columns: 1fr;
+  }
+
+  .download-button {
+    justify-self: start;
+  }
+}
